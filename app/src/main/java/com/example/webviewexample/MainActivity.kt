@@ -43,24 +43,21 @@ class MainActivity : AppCompatActivity() {
             // shouldOverrideUrlLoading() checks whether the URL host matches a specific domain
             // If it matches, then the method returns false in order to not override the URL loading
             // (it allows the WebView to load the URL as usual).
-            override fun shouldOverrideUrlLoading(
-                    view: WebView?,
-                    request: WebResourceRequest?
-            ): Boolean {
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 view?.loadUrl(request?.url.toString())
                 return true
             }
 
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
                 // show the progress bar
                 progress_bar.visibility = View.VISIBLE
-                super.onPageStarted(view, url, favicon)
             }
 
             override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
                 // hide the progress bar
                 progress_bar.visibility = View.GONE
-                super.onPageFinished(view, url)
             }
         }
 
